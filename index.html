@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hey Baby ❤️</title>
+<style>
+body{margin:0;background:#040404;color:#f4d37a;font-family:Georgia,serif;overflow:hidden}
+.chapter{display:none;height:100vh;padding:25px;box-sizing:border-box;align-items:center;justify-content:center;text-align:center;flex-direction:column}
+.active{display:flex}
+h1,h2{margin:10px 0}
+p{max-width:800px;line-height:1.8;font-size:1.1rem}
+.btn{padding:12px 24px;border:1px solid #f4d37a;border-radius:30px;background:none;color:#f4d37a}
+.nav{position:fixed;bottom:20px;right:20px;z-index:10}
+img{max-width:90%;max-height:50vh;border-radius:18px;box-shadow:0 0 30px rgba(244,211,122,.3)}
+.star{position:fixed;color:#fff;animation:twinkle 2s infinite alternate}
+@keyframes twinkle{from{opacity:.2}to{opacity:1}}
+.heart{position:fixed;top:-20px;animation:fall 5s linear forwards}
+@keyframes fall{to{transform:translateY(110vh)}}
+#music{position:fixed;top:10px;right:10px}
+.counter{font-size:1.3rem}
+.letter{display:none;border:1px solid #f4d37a;padding:20px;border-radius:15px;max-width:700px}
+</style>
+</head>
+<body>
+
+<button id="music" class="btn" onclick="toggleMusic()">🎵 Play Music</button>
+<audio id="bgm" src="saiyaara.mp3"></audio>
+
+<div id="c1" class="chapter active">
+<h1>✨ Hey Baby ❤️</h1>
+<p id="intro"></p>
+<button class="btn" onclick="next()">Begin Our Story ✨</button>
+</div>
+
+<div id="c2" class="chapter">
+<h2>💌 The Beginning</h2>
+<img src="first-chat.jpg">
+<p>9 July 2021 ❤️<br><br>
+A simple message. An ordinary day.<br>
+Yet somehow it became one of my favourite memories.<br><br>
+"Hey Krish, Dimple here."</p>
+</div>
+
+<div id="c3" class="chapter">
+<h2>❤️ 27 August 2021</h2>
+<p style="font-size:2rem">11:22 AM</p>
+<p>You said "I love you."<br><br>
+So naturally... as if those words had been waiting for us all along.</p>
+</div>
+
+<div id="c4" class="chapter">
+<h2>💕 29 August 2021</h2>
+<div id="counter" class="counter"></div>
+</div>
+
+<div id="c5" class="chapter">
+<h2>✈️ Our Meetings</h2>
+<p>
+📍 Chennai — 2 July 2022<br><br>
+📍 Surat — 31 January 2024<br><br>
+📍 20 November 2025<br><br>
+Some people travel for vacations.<br>
+I travelled to see my favourite person. ❤️
+</p>
+</div>
+
+<div id="c6" class="chapter">
+<h2>🤝 My Favourite Picture</h2>
+<img src="hand.jpg">
+<p>
+Everyone else sees two hands.<br><br>
+I see the moment I forgot about the world.<br>
+I see comfort.<br>
+I see home.<br>
+I see the girl who made ordinary days feel special.<br><br>
+And if I could keep one moment forever... it would probably be this one.<br><br>
+Because letting go of your hand was difficult...<br>
+but letting go of the memories was impossible. ❤️<br><br>
+The hand I held that day wasn't just a hand.<br>
+It was my favourite place to be.
+</p>
+</div>
+
+<div id="c7" class="chapter">
+<h2>🌙 Things You Never Realized</h2>
+<p>
+❤️ You became my favourite notification.<br><br>
+❤️ Somewhere between all those good mornings and good nights... you became my day.<br><br>
+❤️ Hearing your voice became part of my night.<br><br>
+❤️ Video calls stopped being calls. They became home.
+</p>
+</div>
+
+<div id="c8" class="chapter">
+<h2>💌 Open Only If You're Smiling</h2>
+<button class="btn" onclick="document.getElementById('letter').style.display='block'">Open ❤️</button>
+<div id="letter" class="letter">
+If you're reading this... hopefully you're smiling.<br><br>
+Maybe for a few minutes we travelled back in time together.<br><br>
+Back to laughter.<br>
+Back to calls.<br>
+Back to messages that made us smile at our phones.<br><br>
+That's all I wanted.<br>
+To remind you how beautiful our story has been. ❤️
+</div>
+</div>
+
+<div id="c9" class="chapter">
+<p>
+Some stories are measured in days.<br>
+Ours was measured in memories. ❤️<br><br>
+Thank you for every laugh.<br>
+Every call.<br>
+Every meeting.<br>
+Every memory.<br><br>
+It started with:<br><br>
+"Hey Krish, Dimple here."<br><br>
+❤️<br><br>
+And it became the most beautiful story I've ever lived.<br><br>
+Forever Yours,<br>
+Krish ❤️🤗
+</p>
+</div>
+
+<div class="nav"><button class="btn" onclick="next()">Next ➜</button></div>
+
+<script>
+let chapters=document.querySelectorAll('.chapter');
+let current=0;
+function next(){
+ if(current<chapters.length-1){
+ chapters[current].classList.remove('active');
+ current++;
+ chapters[current].classList.add('active');
+ }
+}
+
+let txt="Before distance. Before pressure. Before fear. There was us. ❤️";
+let i=0;
+(function t(){
+ if(i<txt.length){document.getElementById('intro').innerHTML+=txt[i++];setTimeout(t,55);}
+})();
+
+function counter(){
+ let s=new Date("2021-08-29");
+ let n=new Date();
+ let d=Math.floor((n-s)/(1000*60*60*24));
+ let y=Math.floor(d/365);
+ let m=Math.floor((d%365)/30);
+ let r=d-y*365-m*30;
+ document.getElementById('counter').innerHTML="❤️ Together For ❤️<br>"+y+" Years<br>"+m+" Months<br>"+r+" Days";
+}
+counter();
+
+function toggleMusic(){
+ let a=document.getElementById('bgm');
+ if(a.paused){a.play();}else{a.pause();}
+}
+
+for(let i=0;i<80;i++){
+ let s=document.createElement('div');
+ s.className='star';
+ s.innerHTML=['✦','✧','⭐','✨'][Math.floor(Math.random()*4)];
+ s.style.left=Math.random()*100+'vw';
+ s.style.top=Math.random()*100+'vh';
+ s.style.animationDelay=Math.random()*2+'s';
+ document.body.appendChild(s);
+}
+
+for(let i=0;i<60;i++){
+ let h=document.createElement('div');
+ h.className='heart';
+ h.innerHTML='❤️';
+ h.style.left=Math.random()*100+'vw';
+ document.body.appendChild(h);
+}
+setTimeout(()=>document.querySelectorAll('.heart').forEach(x=>x.remove()),5000);
+</script>
+</body>
+</html>
