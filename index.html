@@ -9,11 +9,22 @@ body{margin:0;background:#040404;color:#f4d37a;font-family:Georgia,serif;overflo
 .chapter{display:none;height:100vh;padding:25px;box-sizing:border-box;align-items:center;justify-content:center;text-align:center;flex-direction:column}
 .active{display:flex}
 h1,h2{margin:10px 0}
-p{max-width:800px;line-height:1.8;font-size:1.1rem}
+p{
+max-width:800px;
+line-height:2;
+font-size:1.25rem;
+padding:0 10px;
+}
 .btn{padding:12px 24px;border:1px solid #f4d37a;border-radius:30px;background:none;color:#f4d37a}
 .nav{position:fixed;bottom:20px;right:20px;z-index:10}
 img{max-width:90%;max-height:50vh;border-radius:18px;box-shadow:0 0 30px rgba(244,211,122,.3)}
-.star{position:fixed;color:#fff;animation:twinkle 2s infinite alternate}
+.star{
+position:fixed;
+color:#f4d37a;
+opacity:.35;
+animation:twinkle 4s infinite alternate;
+pointer-events:none;
+}
 @keyframes twinkle{from{opacity:.2}to{opacity:1}}
 .heart{position:fixed;top:-20px;animation:fall 5s linear forwards}
 @keyframes fall{to{transform:translateY(110vh)}}
@@ -24,8 +35,8 @@ img{max-width:90%;max-height:50vh;border-radius:18px;box-shadow:0 0 30px rgba(24
 </head>
 <body>
 
-<button id="music" class="btn" onclick="toggleMusic()">🎵 Play Music</button>
-<audio id="bgm" src="saiyaara.mp3"></audio>
+<button id="music" class="btn" onclick="toggleMusic()">🎵 Play Our Song</button>
+<audio id="bgm" src="Saiyaara.mp3"></audio>
 
 <div id="c1" class="chapter active">
 <h1>✨ Hey Baby ❤️</h1>
@@ -154,16 +165,53 @@ function counter(){
 counter();
 
 function toggleMusic(){
- let a=document.getElementById('bgm');
- if(a.paused){a.play();}else{a.pause();}
-}
 
-for(let i=0;i<80;i++){
+ let a=document.getElementById('bgm');
+
+ let b=document.getElementById('music');
+
+ if(a.paused){
+
+   a.play();
+
+   b.innerHTML='⏸ Pause Music';
+
+ }else{
+
+   a.pause();
+
+   b.innerHTML='🎵 Play Our Song';
+
+ }
+
+}
+for(let i=0;i<30;i++){
+
  let s=document.createElement('div');
+
  s.className='star';
- s.innerHTML=['✦','✧','⭐','✨'][Math.floor(Math.random()*4)];
- s.style.left=Math.random()*100+'vw';
+
+ s.innerHTML='✦';
+
+ let left;
+
+ if(Math.random()>0.5){
+     left=Math.random()*20;
+ }else{
+     left=80+Math.random()*20;
+ }
+
+ s.style.left=left+'vw';
+
  s.style.top=Math.random()*100+'vh';
+
+ s.style.fontSize=(6+Math.random()*4)+'px';
+
+ s.style.animationDelay=Math.random()*4+'s';
+
+ document.body.appendChild(s);
+
+}
  s.style.animationDelay=Math.random()*2+'s';
  document.body.appendChild(s);
 }
